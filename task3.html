@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 3 – Three layouts, one markup</title>
+  <link rel="stylesheet" href="css/task3.css">
+</head>
+<body>
+  <header class="page-header">
+    <h1>Three layouts · one markup</h1>
+    <p class="subtitle">Change a single class on the container. HTML stays untouched.</p>
+
+    <!-- Simple switcher for the demo (pure links, no JS) -->
+    <p class="hint">Switch layout by changing the single class on the container below to
+      <code>grid</code>, <code>list</code> or <code>magazine</code>. HTML stays untouched.</p>
+  </header>
+
+  <!--
+    THE SAME MARKUP is used for all three modes.
+    Only the class on .items changes:  grid | list | magazine
+    (Currently set to "grid". Change it to see the other two modes.)
+  -->
+  <div class="items grid">
+    <!-- 12 articles / products with varying title & description lengths -->
+
+    <article class="item">
+      <img src="https://picsum.photos/seed/a1/600/400" alt="" class="item-img">
+      <div class="item-body">
+        <h2 class="item-title">Sunrise over the valley</h2>
+        <p class="item-text">A short note about the golden hour light that paints the hills every morning.</p>
+        <time class="item-date" datetime="2026-09-01">1 Sep 2026</time>
+      </div>
+    </article>
+
+    <article class="item">
+      <img src="https://picsum.photos/seed/a2/600/400" alt="" class="item-img">
+      <div class="item-body">
+        <h2 class="item-title">How we redesigned the dashboard in two weeks</h2>
+        <p class="item-text">A longer story that explains the research, the prototypes, the dead ends and the final solution that made the product feel faster and clearer for every user who opens it first thing in the morning.</p>
+        <time class="item-date" datetime="2026-08-28">28 Aug 2026</time>
+      </div>
+    </article>
+
+    <article class="item">
+      <img src="https://picsum.photos/seed/a3/600/400" alt="" class="item-img">
+      <div class="item-body">
+        <h2 class="item-title">Coffee</h2>
+        <p class="item-text">Brief.</p>
+        <time class="item-date" datetime="2026-08-25">25 Aug 2026</time>
+      </div>
+    </article>
+
+    <article class="item">
+      <img src="https://picsum.photos/seed/a4/600/400" alt="" class="item-img">
+      <div class="item-body">
+        <h2 class="item-title">Building resilient layouts without media queries</h2>
+        <p class="item-text">Fluid CSS properties, minmax, auto-fit and a bit of Flexbox inside each card are enough to keep the page readable from a phone to a wide monitor.</p>
+        <time class="item-date" datetime="2026-08-20">20 Aug 2026</time>
+      </div>
+    </article>
+
+    <article class="item">
+      <img src="https://picsum.photos/seed/a5/600/400" alt="" class="item-img">
+      <div class="item-body">
+        <h2 class="item-title">The quiet power of consistent spacing</h2>
+        <p class="item-text">When every margin and padding comes from the same scale the whole interface starts to feel intentional.</p>
+        <time class="item-date" datetime="2026-08-15">15 Aug 2026</time>
+      </div>
+    </article>
+
+    <article class="item">
+      <img src="https://picsum.photos/seed/a6/600/400" alt="" class="item-img">
+      <div class="item-body">
+        <h2 class="item-title">Weekend sketch</h2>
+        <p class="item-text">Just a small drawing from Saturday afternoon.</p>
+        <time class="item-date" datetime="2026-08-10">10 Aug 2026</time>
+      </div>
+    </article>
+
+    <article class="item">
+      <img src="https://picsum.photos/seed/a7/600/400" alt="" class="item-img">
+      <div class="item-body">
+        <h2 class="item-title">Why the recommended plan is taller</h2>
+        <p class="item-text">Extra content and a little more padding make the featured card stand out without any fixed height values – pure Flexbox stretch and content-driven size.</p>
+        <time class="item-date" datetime="2026-08-05">5 Aug 2026</time>
+      </div>
+    </article>
+
+    <article class="item">
+      <img src="https://picsum.photos/seed/a8/600/400" alt="" class="item-img">
+      <div class="item-body">
+        <h2 class="item-title">Grid or Flexbox?</h2>
+        <p class="item-text">Use Grid when you need two-dimensional control. Use Flexbox when the content flows in one direction. Most real pages need both.</p>
+        <time class="item-date" datetime="2026-07-30">30 Jul 2026</time>
+      </div>
+    </article>
+
+    <article class="item">
+      <img src="https://picsum.photos/seed/a9/600/400" alt="" class="item-img">
+      <div class="item-body">
+        <h2 class="item-title">Tiny note</h2>
+        <p class="item-text">Ok.</p>
+        <time class="item-date" datetime="2026-07-22">22 Jul 2026</time>
+      </div>
+    </article>
+
+    <article class="item">
+      <img src="https://picsum.photos/seed/a10/600/400" alt="" class="item-img">
+      <div class="item-body">
+        <h2 class="item-title">A practical colour palette for student projects</h2>
+        <p class="item-text">One primary, one accent, neutrals for text and surfaces. Keep contrast high and reuse the same tokens everywhere so the page looks like a library, not five separate exercises.</p>
+        <time class="item-date" datetime="2026-07-15">15 Jul 2026</time>
+      </div>
+    </article>
+
+    <article class="item">
+      <img src="https://picsum.photos/seed/a11/600/400" alt="" class="item-img">
+      <div class="item-body">
+        <h2 class="item-title">Autumn market</h2>
+        <p class="item-text">Apples, honey and warm bread on a wooden table.</p>
+        <time class="item-date" datetime="2026-07-08">8 Jul 2026</time>
+      </div>
+    </article>
+
+    <article class="item">
+      <img src="https://picsum.photos/seed/a12/600/400" alt="" class="item-img">
+      <div class="item-body">
+        <h2 class="item-title">Closing thoughts on fluid design</h2>
+        <p class="item-text">When the layout survives short titles, long paragraphs and every screen width without a single media query, you know the tools were chosen for the right job.</p>
+        <time class="item-date" datetime="2026-07-01">1 Jul 2026</time>
+      </div>
+    </article>
+  </div>
+
+</body>
+</html>

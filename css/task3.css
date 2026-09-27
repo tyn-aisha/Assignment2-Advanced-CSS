@@ -1,0 +1,219 @@
+/* ============================================================
+   Task 3 – Three layouts, one markup
+   Grid for the three modes · Flexbox inside each item
+   No media queries · fluid from narrow to wide
+   ============================================================ */
+
+:root {
+  --color-bg:      #f4f5f7;
+  --color-surface: #ffffff;
+  --color-text:    #1a1d23;
+  --color-muted:   #5c6570;
+  --color-border:  #e2e6eb;
+  --color-primary: #3a6ad9;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --radius: 12px;
+  --shadow: 0 4px 18px rgba(0,0,0,0.06);
+  --space: 1rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+  padding: 2rem 1rem 4rem;
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.page-header h1 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  margin-bottom: 0.4rem;
+}
+.subtitle {
+  color: var(--color-muted);
+  margin-bottom: 1.25rem;
+}
+.mode-switch {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.mode-link {
+  padding: 0.45em 1em;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.mode-link.active,
+.mode-link:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+.hint {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+.hint code {
+  background: #e8eaee;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  font-size: 0.8em;
+}
+
+/* ============================================================
+   SHARED item structure – Flexbox inside every item
+   ============================================================ */
+.item {
+  display: flex;               /* Flexbox inside the item */
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.item-img {
+  display: block;
+  object-fit: cover;
+  background: #ddd;
+}
+.item-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1rem;
+  min-width: 0;                /* critical for text truncation / wrap */
+}
+.item-title {
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+.item-text {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  flex: 1 1 auto;
+}
+.item-date {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  margin-top: auto;
+}
+
+/* ============================================================
+   MODE 1 – Grid of cards
+   Columns follow window width via auto-fit + minmax (no MQ)
+   ============================================================ */
+.items.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 1.25rem;
+}
+.items.grid .item {
+  flex-direction: column;
+}
+.items.grid .item-img {
+  width: 100%;
+  height: 160px;
+}
+.items.grid .item-date {
+  align-self: flex-start;
+}
+
+/* ============================================================
+   MODE 2 – Compact list
+   Each item is a horizontal row: image | title+text | date
+   ============================================================ */
+.items.list {
+  display: grid;
+  grid-template-columns: 1fr;   /* one column of rows */
+  gap: 0.75rem;
+}
+.items.list .item {
+  flex-direction: row;
+  align-items: stretch;
+}
+.items.list .item-img {
+  width: 120px;
+  min-width: 120px;
+  height: auto;
+  align-self: stretch;
+  object-fit: cover;
+}
+.items.list .item-body {
+  flex: 1 1 auto;
+  flex-direction: row;         /* title+text on left, date on right */
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.5rem 1rem;
+}
+.items.list .item-title {
+  flex: 1 1 140px;
+}
+.items.list .item-text {
+  flex: 2 1 200px;
+  margin: 0;
+}
+.items.list .item-date {
+  margin-left: auto;
+  margin-top: 0;
+  white-space: nowrap;
+  align-self: center;
+}
+
+/* ============================================================
+   MODE 3 – Magazine front page
+   First item spans several columns & rows; others fill around it
+   ============================================================ */
+.items.magazine {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  grid-auto-rows: minmax(140px, auto);
+  gap: 1rem;
+}
+/* Lead item – spans 2 columns and 2 rows when there is room */
+.items.magazine .item:first-child {
+  grid-column: span 2;
+  grid-row: span 2;
+  flex-direction: column;
+}
+.items.magazine .item:first-child .item-img {
+  width: 100%;
+  height: 55%;
+  min-height: 180px;
+  flex: 1 1 auto;
+}
+.items.magazine .item:first-child .item-title {
+  font-size: 1.45rem;
+}
+.items.magazine .item:first-child .item-text {
+  font-size: 1rem;
+}
+
+/* Remaining items stay compact cards */
+.items.magazine .item:not(:first-child) {
+  flex-direction: column;
+}
+.items.magazine .item:not(:first-child) .item-img {
+  width: 100%;
+  height: 110px;
+}

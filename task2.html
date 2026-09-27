@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 2 – Component library (Flexbox)</title>
+  <link rel="stylesheet" href="css/task2.css">
+</head>
+<body>
+  <header class="page-header">
+    <h1>Component Library</h1>
+    <p class="subtitle">Five reusable Flexbox components · one stylesheet · consistent design tokens</p>
+  </header>
+
+  <!-- ========== (1) Navigation bar ========== -->
+  <section class="demo">
+    <h2>1. Navigation bar</h2>
+    <p class="hint">Logo + links + buttons that stay on the right no matter how long the links become.</p>
+    <nav class="navbar">
+      <a href="#" class="logo">Brand<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">About us and our long story</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn btn-ghost">Log in</button>
+        <button class="btn btn-primary">Sign up</button>
+      </div>
+    </nav>
+  </section>
+
+  <!-- ========== (2) Cards row ========== -->
+  <section class="demo">
+    <h2>2. Equal-height cards</h2>
+    <p class="hint">Cards of different description lengths stay equally tall; buttons sit on one baseline.</p>
+    <div class="cards">
+      <article class="card">
+        <h3>Short title</h3>
+        <p>Just a few words of description.</p>
+        <button class="btn btn-primary">Learn more</button>
+      </article>
+      <article class="card">
+        <h3>A medium length heading</h3>
+        <p>This card has a longer description that wraps onto several lines so we can verify that the cards still stretch to the same height and the buttons remain aligned at the bottom.</p>
+        <button class="btn btn-primary">Learn more</button>
+      </article>
+      <article class="card">
+        <h3>Another card</h3>
+        <p>Medium amount of text here for testing equal height behaviour without any fixed heights.</p>
+        <button class="btn btn-primary">Learn more</button>
+      </article>
+    </div>
+  </section>
+
+  <!-- ========== (3) Pagination ========== -->
+  <section class="demo">
+    <h2>3. Pagination bar</h2>
+    <p class="hint">Arrows on the sides, page numbers centred, result count on the right. Parts may wrap on a narrow screen.</p>
+    <div class="pagination">
+      <button class="page-btn" aria-label="Previous">‹</button>
+      <div class="page-numbers">
+        <button class="page-num">1</button>
+        <button class="page-num">2</button>
+        <button class="page-num active">3</button>
+        <button class="page-num">4</button>
+        <button class="page-num">5</button>
+      </div>
+      <button class="page-btn" aria-label="Next">›</button>
+      <span class="result-count">Showing 21–30 of 128</span>
+    </div>
+  </section>
+
+  <!-- ========== (4) Comment block ========== -->
+  <section class="demo">
+    <h2>4. Comment block</h2>
+    <p class="hint">Text wraps beside the avatar and never slides under it.</p>
+    <div class="comment">
+      <img class="avatar" src="https://i.pravatar.cc/80?img=12" alt="User avatar" width="64" height="64">
+      <div class="comment-body">
+        <div class="comment-meta">
+          <strong>Alex Rivera</strong>
+          <time datetime="2026-09-20">2 days ago</time>
+        </div>
+        <p>This is a longer comment that should wrap nicely next to the avatar. The text must never slide underneath the circular image, even when the viewport becomes very narrow or the comment grows to several paragraphs.</p>
+        <p>Second paragraph to demonstrate that the whole text block stays clear of the avatar thanks to Flexbox.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== (5) Pricing table ========== -->
+  <section class="demo">
+    <h2>5. Pricing table</h2>
+    <p class="hint">Three plans; the recommended one is taller – no fixed heights used.</p>
+    <div class="pricing">
+      <div class="plan">
+        <h3>Starter</h3>
+        <p class="price"><span>$9</span>/mo</p>
+        <ul>
+          <li>5 projects</li>
+          <li>Basic support</li>
+          <li>1 GB storage</li>
+        </ul>
+        <button class="btn btn-ghost">Choose</button>
+      </div>
+      <div class="plan plan--featured">
+        <span class="badge">Recommended</span>
+        <h3>Pro</h3>
+        <p class="price"><span>$29</span>/mo</p>
+        <ul>
+          <li>Unlimited projects</li>
+          <li>Priority support</li>
+          <li>50 GB storage</li>
+          <li>Custom domains</li>
+          <li>Team collaboration</li>
+        </ul>
+        <button class="btn btn-primary">Choose</button>
+      </div>
+      <div class="plan">
+        <h3>Enterprise</h3>
+        <p class="price"><span>$99</span>/mo</p>
+        <ul>
+          <li>Everything in Pro</li>
+          <li>SSO &amp; audit logs</li>
+          <li>Dedicated manager</li>
+        </ul>
+        <button class="btn btn-ghost">Contact sales</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    <p>Task 2 · Flexbox only · shared design tokens</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,399 @@
+/* ============================================================
+   Task 2 – Component library (Flexbox only)
+   Shared design tokens · no Grid · no floats · no fixed widths/heights
+   for layout (avatar may keep its own size)
+   ============================================================ */
+
+:root {
+  /* Colour palette */
+  --color-bg:        #f7f8fa;
+  --color-surface:   #ffffff;
+  --color-text:      #1a1d23;
+  --color-muted:     #5c6570;
+  --color-border:    #e2e6eb;
+  --color-primary:   #3a6ad9;
+  --color-primary-h: #2f5bc0;
+  --color-accent:    #ecbe00;
+
+  /* Typography */
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 1.5rem;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+
+  /* Radius & shadow */
+  --radius: 10px;
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  font-size: var(--fs-base);
+  line-height: 1.5;
+  color: var(--color-text);
+  background: var(--color-bg);
+  padding: var(--space-6) var(--space-4);
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+/* ---------- Page chrome ---------- */
+.page-header {
+  margin-bottom: var(--space-8);
+  text-align: center;
+}
+.page-header h1 {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  margin-bottom: var(--space-2);
+}
+.subtitle {
+  color: var(--color-muted);
+}
+
+.demo {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  margin-bottom: var(--space-6);
+  box-shadow: var(--shadow);
+}
+.demo h2 {
+  font-size: var(--fs-lg);
+  margin-bottom: var(--space-2);
+}
+.hint {
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+  margin-bottom: var(--space-5);
+}
+
+.page-footer {
+  text-align: center;
+  color: var(--color-muted);
+  font-size: var(--fs-sm);
+  padding: var(--space-6) 0;
+}
+
+/* ---------- Shared buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.55em 1.1em;
+  font: inherit;
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--color-primary-h);
+}
+.btn-ghost {
+  background: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+.btn-ghost:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* ============================================================
+   (1) Navigation bar
+   Flex row · logo left · links grow · actions pushed to the right
+   ============================================================ */
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.logo {
+  font-weight: 800;
+  font-size: var(--fs-lg);
+  color: var(--color-text);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.logo span {
+  color: var(--color-primary);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  list-style: none;
+  flex: 1 1 auto;          /* take remaining space */
+  min-width: 0;
+}
+.nav-links a {
+  color: var(--color-muted);
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.nav-links a:hover {
+  color: var(--color-primary);
+}
+
+.nav-actions {
+  display: flex;
+  gap: var(--space-2);
+  margin-left: auto;       /* always stay at the right edge */
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   (2) Cards – equal height, buttons on one line
+   ============================================================ */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 220px;         /* fluid width, no fixed height */
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  gap: var(--space-3);
+}
+.card h3 {
+  font-size: var(--fs-lg);
+}
+.card p {
+  color: var(--color-muted);
+  flex: 1 1 auto;          /* grows so the button is pushed down */
+}
+.card .btn {
+  align-self: flex-start;
+  margin-top: auto;        /* sits on the same baseline across cards */
+}
+
+/* ============================================================
+   (3) Pagination
+   arrows | centred numbers | result count on the right
+   ============================================================ */
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+}
+
+.page-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: var(--color-text);
+  flex-shrink: 0;
+}
+.page-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.page-numbers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+  flex: 1 1 auto;
+}
+
+.page-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  padding: 0 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--color-muted);
+}
+.page-num:hover {
+  color: var(--color-primary);
+}
+.page-num.active {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.result-count {
+  margin-left: auto;       /* right edge */
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   (4) Comment – text never slides under the avatar
+   ============================================================ */
+.comment {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start; /* top-align avatar & text */
+  padding: var(--space-4);
+  background: var(--color-bg);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+}
+
+.avatar {
+  flex-shrink: 0;          /* never shrink */
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--color-border);
+}
+
+.comment-body {
+  flex: 1 1 auto;
+  min-width: 0;            /* allow text to wrap properly */
+}
+.comment-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
+  margin-bottom: var(--space-2);
+  font-size: var(--fs-sm);
+}
+.comment-meta time {
+  color: var(--color-muted);
+}
+.comment-body p {
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+.comment-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   (5) Pricing – recommended plan taller, no fixed height
+   ============================================================ */
+.pricing {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  align-items: stretch;    /* all plans same base height first */
+}
+
+.plan {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 200px;
+  padding: var(--space-5);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  gap: var(--space-3);
+  position: relative;
+}
+.plan h3 {
+  font-size: var(--fs-lg);
+}
+.price {
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+}
+.price span {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+.plan ul {
+  list-style: none;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  color: var(--color-muted);
+  font-size: var(--fs-sm);
+}
+.plan ul li::before {
+  content: "✓ ";
+  color: var(--color-primary);
+  font-weight: 700;
+}
+.plan .btn {
+  margin-top: auto;
+  width: 100%;
+}
+
+/* Featured plan grows taller via extra content + padding, not fixed height */
+.plan--featured {
+  background: var(--color-surface);
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 28px rgba(58, 106, 217, 0.15);
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
+  transform: scale(1.03);
+}
+.badge {
+  position: absolute;
+  top: -0.7em;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.3em 0.8em;
+  border-radius: 999px;
+}
